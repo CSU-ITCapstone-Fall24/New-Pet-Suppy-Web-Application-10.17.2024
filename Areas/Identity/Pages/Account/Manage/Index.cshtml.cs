@@ -15,12 +15,12 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<AppUsers> _userManager;
-        private readonly SignInManager<AppUsers> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
         public IndexModel(
-            UserManager<AppUsers> userManager,
-            SignInManager<AppUsers> signInManager)
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -73,7 +73,7 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account.Manage
 
         }
 
-        private async Task LoadAsync(AppUsers user)
+        private async Task LoadAsync(AppUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
