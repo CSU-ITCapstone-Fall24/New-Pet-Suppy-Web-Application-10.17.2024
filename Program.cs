@@ -3,8 +3,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pet_Web_Application_10._12._24_F.Areas.Data;
 using Pet_Web_Application_10._12._24_F.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<PuppiesProductPurchasesDbFContext>(options =>
+
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PuppiesProductPurchasesDbFContext") ?? throw new InvalidOperationException("Connection string 'PuppiesProductPurchasesDbFContext' not found.")));
+
+builder.Services.AddDbContext<PuppiesandProductPurchasesContext>(options =>
+
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PuppiesandProductPurchasesContext") ?? throw new InvalidOperationException("Connection string 'PuppiesandProductPurchasesContext' not found.")));
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

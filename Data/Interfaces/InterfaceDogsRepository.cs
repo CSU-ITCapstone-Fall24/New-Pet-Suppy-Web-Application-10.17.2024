@@ -2,10 +2,12 @@
 
 namespace Pet_Web_Application_10._12._24_F.Data.Interfaces
 {
-    public interface InterfaceDogsRepository
+   
+
+    public interface INterfaceDogsRepository
     {
-        IEnumerable<Dog> Dogs { get; set; }
-        IEnumerable<Dog> PrefferedDog { get; set; }
-        Product GetDogById(int dogId);
+        IEnumerable<Dogs> Dogs { get; set; }
+        IEnumerable<Dogs> PrefferedDog { get; set; }
+        Dogs GetDogById(int dogId);
     }
 }

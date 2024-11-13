@@ -20,3 +20,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+body {
+    background-image: url('/Images/cute-dog-sleeping-ai-generatedBackgroundImage.jpg');
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+}
+
+body {
+    background-image: url('/Images/cute-dog-sleeping-ai-generatedBackgroundImage.jpg');
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-position: center; /* Centers the image on the page */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+body {
+    background-image: url('/Images/cute-dog-sleeping-ai-generatedBackgroundImage.jpg');
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* No tiling */
+    background-size: cover;
+}
+

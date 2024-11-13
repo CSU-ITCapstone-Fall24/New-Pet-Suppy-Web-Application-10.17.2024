@@ -2,7 +2,7 @@
 
 namespace Pet_Web_Application_10._12._24_F.Data.Interfaces
 {
-    public interface InterfaceProductRepository
+    public interface INterfaceProductRepository
     {
         IEnumerable<Product> Products { get; set; }
         IEnumerable<Product> PrefferedProduducts { get; set; }
