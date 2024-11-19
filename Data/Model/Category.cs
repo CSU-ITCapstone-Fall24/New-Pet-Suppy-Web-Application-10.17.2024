@@ -14,6 +14,6 @@ namespace Pet_Web_Application_10._12._24_F.Data.Model
         public required List<Category> Categories { get; set; }
 
         public required List<Dogs> Breed { get; set; }
-
+        public string Name { get; internal set; }
     }
 }
