@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Pet_Web_Application_10._12._24_F.Areas.Data;
 using Pet_Web_Application_10._12._24_F.Data;
 using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,3 +53,4 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+

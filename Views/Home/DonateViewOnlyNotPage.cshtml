@@ -1,26 +1,19 @@
-﻿@*
+﻿
 @model Pet_Web_Application_10._12._24_F.Models.DonationModel
-<!-- DonateButton.cshtml -->
-<button id="donateButton" class="btn btn-primary">Donate</button>
-*@
+
 @{
     ViewData["Title"] = "Donate";
 }
-<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
 
 <h2>Donate</h2>
-<form method="post" action="@Url.Action("Donate", "Home")">
-    <!-- Add your donation form fields here -->
-    <button type="submit" class="btn btn-success">Submit Donation</button>
+
+<form method="post" asp-action="SubmitDonation">
+    <div>
+        <label for="amount">Donation Amount:</label>
+        <input type="text" id="amount" name="amount" />
+    </div>
+    <button type="submit">Submit Donation</button>
 </form>
 
-<h2>Support Us</h2>
-<p>Your donation helps us continue our work.</p>
-
-<!-- Donate Button -->
-<button id="donateButton" class="btn btn-primary">Donate</button>
-
-<!-- Add this script at the bottom of the file -->
-<script>
-    document.getElementById('donateButton').addEventListener('click', function () {
-        window.location.href = '/Donate';
+<h3>Support Us</h3>
+<p>Your donation helps us continue our work.</p>nate';
