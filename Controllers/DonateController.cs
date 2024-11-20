@@ -21,7 +21,9 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
         [HttpGet]
         public IActionResult Donate()
         {
+            ViewData["Title"] = "Donate";
             return View();
+
         }
 
         [HttpPost]
