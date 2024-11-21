@@ -1,24 +1,52 @@
-﻿
+﻿@model List<Pet_Web_Application_10._12._24_F.Models.CartItem>
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-   
-</head>
-<body>
-    <div class="text-center">
-        <h1 class="display-4">Fur Babbies And Supply One Stop Shop</h1>
-        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        <p>This Website Allows Donations, Adoptions of Fur Babbies, and Product to care for them.</p>
-        <div class="donate-button-container">
-           
-        </div>
-    </div>
-</body>
-</html>
+<div>
+    <h1>Fur Babbies And Supply One Stop Shop</h1>
+    <p>Learn about building Web apps with ASP.NET Core.</p>
+    <p>This Website Allows Donations, Adoptions of Fur Babbies, and Product to care for them.</p>
+</div>
 
-//second button created(remove if you don't want it.)
-<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
+<!-- Existing Donate button code -->
+<div>
+    <!-- Your existing donate button code here -->
+</div>
+
+<!-- Shopping Cart Section -->
+<h2>Your Shopping Cart</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Product.Price.ToString("C")</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Product.Price * item.Quantity).ToString("C")</td>
+                <td>
+                    <form asp-action="RemoveFromCart" asp-route-productId="@item.Product.Id" method="post">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Total: @ViewData["Total"]</h3>
+
+<a asp-action="AddToCart" asp-route-productId="1">Add Product 1 to Cart</a>
+<a asp-action="AddToCart" asp-route-productId="2">Add Product 2 to Cart</a>
