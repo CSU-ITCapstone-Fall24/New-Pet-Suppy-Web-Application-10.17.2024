@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pet_Web_Application_10._12._24_F.Areas.Data;
 using Pet_Web_Application_10._12._24_F.Data;
-using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
 using Pet_Web_Application_10._12._24_F.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 builder.Services.AddDbContext<PuppiesProductPurchasesDbFContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PuppiesProductPurchasesDbFContext") ?? throw new InvalidOperationException("Connection string 'PuppiesProductPurchasesDbFContext' not found.")));
 
@@ -20,8 +19,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
 
@@ -50,6 +50,7 @@ app.UseRouting();
 
 app.UseSession(); // Enable session middleware
 
+app.UseAuthentication(); // Ensure authentication middleware is added
 app.UseAuthorization();
 
 app.MapControllerRoute(

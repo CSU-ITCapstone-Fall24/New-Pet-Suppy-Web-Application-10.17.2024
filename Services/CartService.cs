@@ -8,62 +8,38 @@ namespace Pet_Web_Application_10._12._24_F.Services
 {
     public class CartService
     {
-        private readonly ISession _session;
+        private readonly List<CartItem> _cartItems = new List<CartItem>();
 
-        public CartService(IHttpContextAccessor httpContextAccessor)
-        {
-            _session = httpContextAccessor.HttpContext?.Session ?? throw new ArgumentNullException(nameof(httpContextAccessor.HttpContext.Session), "Session is null");
-        }
-
-        private List<CartItem> GetCartItems()
-        {
-            var cart = _session.GetString("Cart");
-            return string.IsNullOrEmpty(cart) ? new List<CartItem>() : JsonConvert.DeserializeObject<List<CartItem>>(cart) ?? new List<CartItem>();
-        }
-
-        private void SaveCartItems(List<CartItem> cartItems)
-        {
-            _session.SetString("Cart", JsonConvert.SerializeObject(cartItems));
-        }
+        public IEnumerable<CartItem> GetCartItems() => _cartItems;
 
         public void AddToCart(Product product)
         {
-            var cartItems = GetCartItems();
-            var existingItem = cartItems.FirstOrDefault(item => item.Product.Id == product.Id);
-
-            if (existingItem != null)
+            var cartItem = _cartItems.FirstOrDefault(item => item.ProductId == product.Id);
+            if (cartItem != null)
             {
-                existingItem.Quantity++;
+                cartItem.Quantity++;
             }
             else
             {
-                cartItems.Add(new CartItem { Product = product, Quantity = 1 });
+                _cartItems.Add(new CartItem
+                {
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    Price = product.Price,
+                    Quantity = 1
+                });
             }
-
-            SaveCartItems(cartItems);
         }
 
         public void RemoveFromCart(int productId)
         {
-            var cartItems = GetCartItems();
-            var itemToRemove = cartItems.FirstOrDefault(item => item.Product.Id == productId);
-
-            if (itemToRemove != null)
+            var cartItem = _cartItems.FirstOrDefault(item => item.ProductId == productId);
+            if (cartItem != null)
             {
-                cartItems.Remove(itemToRemove);
-                SaveCartItems(cartItems);
+                _cartItems.Remove(cartItem);
             }
         }
 
-        public List<CartItem> GetCart()
-        {
-            return GetCartItems();
-        }
-
-        public decimal GetTotal()
-        {
-            var cartItems = GetCartItems();
-            return cartItems.Sum(item => item.Product.Price * item.Quantity);
-        }
+        public decimal GetTotal() => _cartItems.Sum(item => item.Price * item.Quantity);
     }
 }
