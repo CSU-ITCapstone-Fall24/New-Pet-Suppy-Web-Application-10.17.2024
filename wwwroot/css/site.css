@@ -102,3 +102,44 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
  
+/*Fur Babies Catalog Page */
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.puppy-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    width: 200px; /* Fixed width to prevent stretching */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+    .puppy-item img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .puppy-item button {
+        margin-top: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.add-to-cart {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.donate {
+    background-color: #ffc107;
+    color: #fff;
+}
