@@ -1,43 +1,26 @@
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pet_Web_Application_10._12._24_F.Areas.Data;
 using Pet_Web_Application_10._12._24_F.Data;
-using Pet_Web_Application_10._12._24_F.Services;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<PuppiesProductPurchasesDbFContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PuppiesProductPurchasesDbFContext") ?? throw new InvalidOperationException("Connection string 'PuppiesProductPurchasesDbFContext' not found.")));
-
-builder.Services.AddDbContext<PuppiesandProductPurchasesContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PuppiesandProductPurchasesContext") ?? throw new InvalidOperationException("Connection string 'PuppiesandProductPurchasesContext' not found.")));
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
-
-// Add session and CartService
-builder.Services.AddSession();
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<CartService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseMigrationsEndPoint();
-}
-else
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
@@ -48,14 +31,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession(); // Enable session middleware
-
-app.UseAuthentication(); // Ensure authentication middleware is added
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
 
 app.Run();
