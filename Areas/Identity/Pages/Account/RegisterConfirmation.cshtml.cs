@@ -18,10 +18,10 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel
     {
-        private readonly UserManager<AppUsers> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IEmailSender _sender;
 
-        public RegisterConfirmationModel(UserManager<AppUsers> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<AppUser> userManager, IEmailSender sender)
         {
             _userManager = userManager;
             _sender = sender;

@@ -25,17 +25,17 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<AppUsers> _signInManager;
-        private readonly UserManager<AppUsers> _userManager;
-        private readonly IUserStore<AppUsers> _userStore;
-        private readonly IUserEmailStore<AppUsers> _emailStore;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IUserStore<AppUser> _userStore;
+        private readonly IUserEmailStore<AppUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<AppUsers> userManager,
-            IUserStore<AppUsers> userStore,
-            SignInManager<AppUsers> signInManager,
+            UserManager<AppUser> userManager,
+            IUserStore<AppUser> userStore,
+            SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -122,7 +122,7 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AppUsers
+                var user = new AppUser
 
                 {
                     FirstName = Input.FirstName,
@@ -146,7 +146,7 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId, code, returnUrl },
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
@@ -154,7 +154,7 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl });
                     }
                     else
                     {
@@ -172,27 +172,27 @@ namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private AppUsers CreateUser()
+        private AppUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<AppUsers>();
+                return Activator.CreateInstance<AppUser>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(AppUsers)}'. " +
-                    $"Ensure that '{nameof(AppUsers)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(AppUser)}'. " +
+                    $"Ensure that '{nameof(AppUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<AppUsers> GetEmailStore()
+        private IUserEmailStore<AppUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<AppUsers>)_userStore;
+            return (IUserEmailStore<AppUser>)_userStore;
         }
     }
 }

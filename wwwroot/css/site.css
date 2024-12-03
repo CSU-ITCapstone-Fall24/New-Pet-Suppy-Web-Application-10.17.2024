@@ -20,3 +20,126 @@ html {
 body {
   margin-bottom: 60px;
 }
+body {
+    background-image: url('/Images/cute-dog-sleeping-ai-generatedBackgroundImage.jpg');
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+}
+
+body {
+    background-image: url('/Images/cute-dog-sleeping-ai-generatedBackgroundImage.jpg');
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-position: center; /* Centers the image on the page */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+body {
+    background-image: url('/Images/cute-dog-sleeping-ai-generatedBackgroundImage.jpg');
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* No tiling */
+    background-size: cover;
+}
+
+
+/* Center the Contact Us title */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contact Form Styles */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    #contact-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    #contact-form label {
+        font-weight: bold;
+    }
+
+    #contact-form .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    #contact-form .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+.contact-us {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.privacy-notice {
+    color: white;
+    background-color: #333; /* Dark background for contrast */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.about-us {
+    color: white;
+    background-color: #333; /* Dark background for contrast */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ 
+/*Fur Babies Catalog Page */
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.puppy-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    width: 200px; /* Fixed width to prevent stretching */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+    .puppy-item img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .puppy-item button {
+        margin-top: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.add-to-cart {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.donate {
+    background-color: #ffc107;
+    color: #fff;
+}
