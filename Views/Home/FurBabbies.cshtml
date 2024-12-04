@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "FurBabbies";
+    ViewData["Title"] = "Fur Babies";
 }
 
-<h1>FurBabbies</h1>
+<h1>Fur Babies</h1>
 
 This page will contian a catalog of puppies.
 
@@ -17,25 +17,25 @@ This page will contian a catalog of puppies.
         <h2>Lab</h2>
         <button class="add-to-cart">Add to Cart</button>
         <button class="add-to-cart">Adopt</button>
-        <button class="donate" onclick="window.location.href='donate.html'">Donate</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
     <div class="puppy-item">
         <img src="~/Images/Chihuaha.jpg" alt="Chihuaha">
         <h2>Chihuaha</h2>
         <button class="add-to-cart">Adopt</button>
-        <button class="donate" onclick="window.location.href='donate.html'">Donate</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
     <div class="puppy-item">
         <img src="~/Images/poodle.jpg" alt="Poodle">
         <h2>Poodle</h2>
         <button class="add-to-cart">Adopt</button>
-        <button class="donate" onclick="window.location.href='donate.html'">Donate</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
     <div class="puppy-item">
         <img src="~/Images/yorkie.jpg" alt="Yorkie">
         <h2>Yorkie</h2>
         <button class="add-to-cart">Adopt</button>
-        <button class="donate" onclick="window.location.href='donate.html'">Donate</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
 </div>
 

@@ -1,32 +1,8 @@
-﻿@page
-@model Pet_Web_Application_10._12._24_F.Views.Home.DonateModel
+﻿
 @{
     ViewData["Title"] = "Donate";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h1>Donate</h1>
+<p>Donations Help Our Organization Running and Taking Care of Our Fur Babies Until They Find Their Forever Home!!!</p>
 
-<form method="post" action="/Home/Donate">
-    <div class="form-group">
-        <label for="amount">Donation Amount:</label>
-        <input type="number" class="form-control" id="amount" name="amount" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Donate</button>
-</form>
-
-<h3>Choose your donation method:</h3>
-<form>
-    <div class="form-group">
-        <label for="cardNumber">Card Number</label>
-        <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
-    </div>
-    <div class="form-group">
-        <label for="expiryDate">Expiry Date</label>
-        <input type="text" class="form-control" id="expiryDate" name="expiryDate" required>
-    </div>
-    <div class="form-group">
-        <label for="cvv">CVV</label>
-        <input type="text" class="form-control" id="cvv" name="cvv" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Donate</button>
-</form>

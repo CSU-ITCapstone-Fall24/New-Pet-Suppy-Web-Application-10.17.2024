@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Fur Babbies And Supply One Stop Shop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Pet_Web_Application_10._12._24_F.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/4e40de2331.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -34,7 +36,7 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FurBabbies">Fur Babbies Catalog</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FurBabbies">Fur Babies Catalog</a>
                         </li>
 
 
@@ -42,6 +44,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Donate">Donate</a>
+                        </li>
+
+
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -66,11 +74,5 @@
 </body>
 </html>
 
-//Puppy  Catalog Navigation
 
-<nav>
-    <ul>
-        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-        <li><a asp-controller="Home" asp-action="FurBabiesCatalog">Fur Babies Catalog</a></li>
-    </ul>
-</nav>
+
