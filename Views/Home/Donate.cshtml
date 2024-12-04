@@ -3,6 +3,35 @@
     ViewData["Title"] = "Donate";
 }
 
-<h1>Donate</h1>
-<p>Donations Help Our Organization Running and Taking Care of Our Fur Babies Until They Find Their Forever Home!!!</p>
 
+<h1 class="white-text">Donate</h1>
+
+<p class="white-text">Donations Help Our Organization Running and Taking Care of Our Fur Babies Until They Find Their Forever Home!!!</p>
+<h2 class="white-text">Donate</h2>
+<form asp-action="SubmitDonation" method="post">
+    <div>
+        <label for="DonorName" class="white-text">Name:</label>
+        <input type="text" id="DonorName" name="DonorName" required />
+    </div>
+    <div>
+        <label for="CreditCardNumber" class="white-text">Credit Card Number:</label>
+        <input type="text" id="CreditCardNumber" name="CreditCardNumber" required />
+    </div>
+    <div>
+        <label for="CVV" class="white-text">CVV:</label>
+        <input type="text" id="CVV" name="CVV" required />
+    </div>
+    <div>
+        <label for="BillingAddress" class="white-text">Billing Address:</label>
+        <input type="text" id="BillingAddress" name="BillingAddress" required />
+    </div>
+    <div>
+        <label for="MailingAddress" class="white-text">Mailing Address:</label>
+        <input type="text" id="MailingAddress" name="MailingAddress" required />
+    </div>
+    <div>
+        <label for="Amount" class="white-text">Amount:</label>
+        <input type="number" id="Amount" name="Amount" required />
+    </div>
+    <button type="submit">Sumit Donation</button>
+</form>

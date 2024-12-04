@@ -58,7 +58,15 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
             return View();
 
         }
-    
+
+        public IActionResult SubmitDonation()
+        {
+
+            return View();
+
+        }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
