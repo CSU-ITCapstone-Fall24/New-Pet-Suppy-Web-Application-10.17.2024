@@ -67,6 +67,14 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
         }
 
 
+        public IActionResult Cart()
+        {
+
+            return View();
+
+        }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
