@@ -21,6 +21,10 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
             return View();
         }
 
+
+
+
+
         public IActionResult Privacy()
         {
             return View();
