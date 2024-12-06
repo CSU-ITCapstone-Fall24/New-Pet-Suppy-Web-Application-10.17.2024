@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Pet_Web_Application_10._12._24_F.Areas.Data;
 using Pet_Web_Application_10._12._24_F.Data;
+using Pet_Web_Application_10._12._24_F.Data.Model; // Ensure this namespace is included
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pet_Web_Application_10._12._24_F.Areas.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
+
+// Register ShoppingCart as a scoped service
+builder.Services.AddScoped<ShoppingCart>();
 
 var app = builder.Build();
 

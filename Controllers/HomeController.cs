@@ -9,19 +9,26 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 using System.Text;
+using Pet_Web_Application_10._12._24_F.Data.Model;
+using Pet_Web_Application_10._12._24_F.Views.Cart;
 
 namespace Pet_Web_Application_10._12._24_F.Controllers
 {
-    public class HomeController(ILogger<HomeController> logger) : Controller
+    public class HomeController: Controller
     {
-        private readonly ILogger<HomeController> _logger = logger;
+        private readonly ILogger<HomeController> _logger;
+        private readonly ShoppingCart _shoppingCart;
+
+        public HomeController(ILogger<HomeController> logger, ShoppingCart shoppingCart)
+        {
+            _logger = logger;
+            _shoppingCart = shoppingCart;
+        }
 
         public IActionResult Index()
         {
             return View();
         }
-
-
 
 
 
@@ -73,9 +80,12 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
 
         public IActionResult Cart()
         {
-
-            return View();
-
+            var model = new IndexModel
+            {
+                ShoppingCart = _shoppingCart
+                // Initialize other properties as needed
+            };
+            return View(model);
         }
 
 
