@@ -10,82 +10,76 @@ using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 using System.Text;
 using Pet_Web_Application_10._12._24_F.Data.Model;
-using Pet_Web_Application_10._12._24_F.Views.Cart;
+using Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account.Manage;
+using Pet_Web_Application_10._12._24_F.Models.Cart;
+
 
 namespace Pet_Web_Application_10._12._24_F.Controllers
 {
-    public class HomeController: Controller
+    public class HomeController(ILogger<HomeController> logger, ShoppingCart shoppingCart) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly ShoppingCart _shoppingCart;
-
-        public HomeController(ILogger<HomeController> logger, ShoppingCart shoppingCart)
-        {
-            _logger = logger;
-            _shoppingCart = shoppingCart;
-        }
+        private readonly ILogger<HomeController> _logger = logger;
+        private readonly ShoppingCart _shoppingCart = shoppingCart;
 
         public IActionResult Index()
         {
+            // Load products from the database
+            
             return View();
         }
-
 
 
         public IActionResult Privacy()
         {
             return View();
         }
+
         public IActionResult About()
         {
             return View();
-
         }
 
         public IActionResult Contact()
         {
-
             return View();
-
         }
 
         public IActionResult ProductNPrices()
         {
-
             return View();
-
         }
 
         public IActionResult FurBabbies()
         {
-
             return View();
-
         }
 
         public IActionResult Donate()
         {
-            
             return View();
-
         }
 
         public IActionResult SubmitDonation()
         {
-
             return View();
+        }
 
+        [HttpPost]
+        public IActionResult AddToCart(int productId, string productName, int quantity, decimal price)
+        {
+            _shoppingCart.AddItem(productId, productName, quantity, price);
+            return RedirectToAction("Cart");
         }
 
 
         public IActionResult Cart()
         {
-            var model = new IndexModel
+            var model = new Pet_Web_Application_10._12._24_F.Models.Cart.IndexModel
             {
                 ShoppingCart = _shoppingCart
                 // Initialize other properties as needed
             };
-            return View(model);
+            return View("Cart", model); 
         }
 
 

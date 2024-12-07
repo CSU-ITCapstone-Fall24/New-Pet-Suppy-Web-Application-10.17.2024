@@ -7,13 +7,8 @@ using Pet_Web_Application_10._12._24_F.Models;
 
 namespace Pet_Web_Application_10._12._24_F.Data
 {
-    public class PuppiesandProductPurchasesContext : DbContext
+    public class PuppiesandProductPurchasesContext(DbContextOptions<PuppiesandProductPurchasesContext> options) : DbContext(options)
     {
-        public PuppiesandProductPurchasesContext (DbContextOptions<PuppiesandProductPurchasesContext> options)
-            : base(options)
-        {
-        }
-
         public DbSet<Pet_Web_Application_10._12._24_F.Models.Puppies> Puppies { get; set; } = default!;
     }
 }

@@ -2,7 +2,7 @@
 {
     public class ShoppingCart
     {
-        public List<CartItem> Items { get; set; } = new List<CartItem>();
+        public List<CartItem> Items { get; set; } = [];
 
         public int ItemCount
         {
@@ -19,6 +19,7 @@
                 return Items.Sum(item => item.Price * item.Quantity);
             }
         }
+
         public required string ShippingAddress { get; set; }
         public required string PaymentMethod { get; set; }
         public required string BillingAddress { get; set; }
