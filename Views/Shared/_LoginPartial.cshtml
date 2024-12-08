@@ -16,11 +16,7 @@
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cart">
-                <i class="fas fa-shopping-cart"></i> Cart
-            </a>
-        </li>
+        
     }
     else
     {
@@ -30,6 +26,9 @@
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
+        
+    
+    
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cart">
                 <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span>

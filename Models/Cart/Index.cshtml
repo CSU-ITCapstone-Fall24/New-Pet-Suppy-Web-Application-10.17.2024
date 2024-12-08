@@ -1,9 +1,12 @@
 ﻿@page
 @using Pet_Web_Application_10._12._24_F.Models.Cart
 
-@model Pet_Web_Application_10._12._24_F.Models.Cart.IndexModel
+@model IndexModel
+@{
 
-<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>
+    ViewData["Title"] = "Cart";
+    }
+    <h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>
 <p>Website is secured with SSL</p>
 
 <h3>1. Shipping address</h3>

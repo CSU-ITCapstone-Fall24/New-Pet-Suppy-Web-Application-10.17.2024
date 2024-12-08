@@ -13,18 +13,12 @@ using Pet_Web_Application_10._12._24_F.Areas.Data;
 
 namespace Pet_Web_Application_10._12._24_F.Areas.Identity.Pages.Account.Manage
 {
-    public class IndexModel : PageModel
+    public class IndexModel(
+        UserManager<AppUser> userManager,
+        SignInManager<AppUser> signInManager) : PageModel
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
-
-        public IndexModel(
-            UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
+        private readonly UserManager<AppUser> _userManager = userManager;
+        private readonly SignInManager<AppUser> _signInManager = signInManager;
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

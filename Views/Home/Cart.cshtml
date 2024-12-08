@@ -1,17 +1,15 @@
-﻿@page
+﻿@using Pet_Web_Application_10._12._24_F.Controllers
 @using Pet_Web_Application_10._12._24_F.Models.Cart
+@model   CartViewModel
 
-@model IndexModel
 @{
     ViewData["Title"] = "Cart";
 }
 
-<h1>Cart</h1>
-<p>Welcome to your cart!</p>
+<h1>@ViewData["Title"]</h1>
 
-<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>System.NullReferenceException: 'Object reference not set to an instance of an object.'
 
-AspNetCoreGeneratedDocument.Views_Home_Cart.ViewData.get returned null.
+<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>
 
 <p>Website is secured with SSL</p>
 
@@ -37,10 +35,10 @@ AspNetCoreGeneratedDocument.Views_Home_Cart.ViewData.get returned null.
 @foreach (var item in Model.ShoppingCart.Items)
 {
     <div>
-        <p>@item.Product.Name</p> <!-- Accessing Product.Name instead of ProductName -->
-        <p>$@item.Product.Price & FREE Returns</p> <!-- Accessing Product.Price instead of Price -->
+        <p>@item.Product.Name</p>
+        <p>$@item.Product.Price & FREE Returns</p>
         <p>Qty: @item.Quantity</p>
-        <p>Sold by: Default Seller</p> <!-- Update this if you have a Seller property -->
+        <p>Sold by: Default Seller</p>
         <p>Gift options not available</p>
         <p>Item arrives in packaging that shows what’s inside. To hide it, choose Ship in Fur Babies packaging.</p>
         <p><input type="checkbox" /> Ship in Fur Babies packaging</p>
@@ -49,12 +47,3 @@ AspNetCoreGeneratedDocument.Views_Home_Cart.ViewData.get returned null.
 
 <p>Total: $@Model.ShoppingCart.TotalPrice</p>
 <button>Place your order</button>
-
-@{
-    ViewData["Title"] = "Cart";
-}
-
-<h1>@ViewData["Title"]</h1>
-<p>@ViewData["Message"]</p>
-
-<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>

@@ -59,8 +59,14 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
             return View();
         }
 
-        
-        
+
+        public IActionResult Cart()
+        {
+            return View();
+        }
+
+
+
 
         public IActionResult SubmitDonation()
         {
@@ -97,20 +103,7 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
             return RedirectToAction("Cart");
         }
 
-        public IActionResult Cart()
-        {
-            var model = new CartViewModel
-            {
-                ShoppingCart = _shoppingCart
-            };
-
-            // Set ViewData values
-            ViewData["Title"] = "Your Shopping Cart";
-            ViewData["Message"] = "Here are the items in your cart.";
-
-            return View(model);
-        }
-
+        
 
 
 
