@@ -34,3 +34,29 @@ Contact Us
     <p>We are here to assist you 24/7! Feel free to reach out to us anytime, Monday through Friday. Call us at <strong>555-555-0000</strong> for any inquiries or support. We look forward to hearing from you!</p>
 </div>
 <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #3c8f3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thank You!</h1>
+    <p>@ViewBag.ConfirmationMessage</p>
+    <a href="/" style="text-decoration: none; color: #3c8f3c;">Return to Homepage</a>
+</body>
+</html>

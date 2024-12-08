@@ -16,5 +16,14 @@ namespace Pet_Web_Application_10._12._24_F.Data
 
         public DbSet<ContactMessage> ContactMessages { get; set; }
         public DbSet<Donation> Donations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Donation>()
+                .Property(d => d.Amount)
+                .HasColumnType("decimal(18,2)"); // Specify precision and scale
+        }
     }
 }

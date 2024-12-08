@@ -4,80 +4,88 @@
 
 <h1>Fur Babies</h1>
 
-This page will contian a catalog of puppies.
-
+This page will contain a catalog of puppies.
 
 <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fur Babies</title>
-</head>
-<body>
-    <h1>Fur Babies</h1>
-   <div class="catalog">
+<div class="catalog">
     <div class="puppy-item">
         <img src="~/Images/lab.jpg" alt="Lab">
         <h2>Lab</h2>
         <p>Price: $200</p>
-        <button class="add-to-cart" onclick="addToCart('Lab')">Add to Cart</button>
-        <button class="add-to-cart" onclick="adoptAnimal('Lab')">Adopt</button>
+        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+            <input type="hidden" name="productId" value="1" />
+            <input type="hidden" name="productName" value="Lab" />
+            <input type="hidden" name="quantity" value="1" />
+            <input type="hidden" name="price" value="200" />
+            <button type="submit">Adopt</button>
+        </form>
         <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
     <div class="puppy-item">
         <img src="~/Images/Chihuaha.jpg" alt="Chihuaha">
         <h2>Chihuaha</h2>
         <p>Price: $200</p>
-        <button class="add-to-cart" onclick="addToCart('Chihuahua')">Add to Cart</button>
-        <button class="add-to-cart" onclick="adoptAnimal('Chihuahua')">Adopt</button>
+        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+            <input type="hidden" name="productId" value="2" />
+            <input type="hidden" name="productName" value="Chihuaha" />
+            <input type="hidden" name="quantity" value="1" />
+            <input type="hidden" name="price" value="200" />
+            <button type="submit">Adopt</button>
+        </form>
         <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
     <div class="puppy-item">
         <img src="~/Images/poodle.jpg" alt="Poodle">
         <h2>Poodle</h2>
         <p>Price: $200</p>
-        <button class="add-to-cart" onclick="addToCart('Poodle')">Add to Cart</button>
-        <button class="add-to-cart" onclick="adoptAnimal('Poodle')">Adopt</button>
+        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+            <input type="hidden" name="productId" value="3" />
+            <input type="hidden" name="productName" value="Poodle" />
+            <input type="hidden" name="quantity" value="1" />
+            <input type="hidden" name="price" value="200" />
+            <button type="submit">Adopt</button>
+        </form>
         <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
     <div class="puppy-item">
         <img src="~/Images/yorkie.jpg" alt="Yorkie">
         <h2>Yorkie</h2>
         <p>Price: $200</p>
-        <button class="add-to-cart" onclick="addToCart('Yorkie')">Add to Cart</button>
-        <button class="add-to-cart" onclick="adoptAnimal('Yorkie')">Adopt</button>
+        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+            <input type="hidden" name="productId" value="4" />
+            <input type="hidden" name="productName" value="Yorkie" />
+            <input type="hidden" name="quantity" value="1" />
+            <input type="hidden" name="price" value="200" />
+            <button type="submit">Adopt</button>
+        </form>
         <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
     </div>
 </div>
 
-    <script>
-        const animals = [
-            { name: 'Lab', price: 200 },
-            { name: 'Chihuahua', price: 200 },
-            { name: 'Poodle', price: 200 },
-            { name: 'Yorkie', price: 200 }
-        ];
+<script>
+    const animals = [
+        { name: 'Lab', price: 200 },
+        { name: 'Chihuahua', price: 200 },
+        { name: 'Poodle', price: 200 },
+        { name: 'Yorkie', price: 200 }
+    ];
 
-        let shoppingCart = [];
-        let totalPrice = 0;
+    let shoppingCart = [];
+    let totalPrice = 0;
 
-        function adoptAnimal(animalName) {
-            const animal = animals.find(a => a.name === animalName);
-            if (animal) {
-                shoppingCart.push(animal);
-                totalPrice += animal.price;
-                updateCartDisplay();
-            }
+    function adoptAnimal(animalName) {
+        const animal = animals.find(a => a.name === animalName);
+        if (animal) {
+            shoppingCart.push(animal);
+            totalPrice += animal.price;
+            updateCartDisplay();
         }
+    }
 
-        function updateCartDisplay() {
-            console.log('Shopping Cart:', shoppingCart);
-            console.log('Total Price: $' + totalPrice);
-            // You can also update the display on the webpage here
-        }
-    </script>
-</body>
-</html>
+    function updateCartDisplay() {
+        console.log('Shopping Cart:', shoppingCart);
+        console.log('Total Price: $' + totalPrice);
+        // You can also update the display on the webpage here
+    }
+</script>

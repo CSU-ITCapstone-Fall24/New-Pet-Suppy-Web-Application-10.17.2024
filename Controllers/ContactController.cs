@@ -12,7 +12,7 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index"); // Ensure your view file is named Index.cshtml
         }
 
         [HttpPost]
@@ -31,7 +31,7 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
             await _context.SaveChangesAsync();
 
             ViewBag.Message = "Thank you for contacting us!";
-            return View("Index");
+            return View("Index"); // Ensure your view file is named Index.cshtml
         }
     }
 }

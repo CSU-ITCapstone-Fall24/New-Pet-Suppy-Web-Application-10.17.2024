@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pet_Web_Application_10._12._24_F.Data.Model; // Ensure this namespace is included
+using Pet_Web_Application_10._12._24_F.Data.Model;
+using Pet_Web_Application_10._12._24_F.Models.Cart;
 
 namespace Pet_Web_Application_10._12._24_F.Controllers
 {
@@ -23,7 +24,11 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
 
         public IActionResult Index()
         {
-            return View(_shoppingCart);
+            var model = new IndexModel
+            {
+                ShoppingCart = _shoppingCart
+            };
+            return View(model);
         }
     }
 }
