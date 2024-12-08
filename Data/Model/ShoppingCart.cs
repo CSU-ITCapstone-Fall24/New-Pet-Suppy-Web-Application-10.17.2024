@@ -1,41 +1,24 @@
-﻿namespace Pet_Web_Application_10._12._24_F.Data.Model
+﻿
+
+
+using Stripe;
+
+namespace Pet_Web_Application_10._12._24_F.Data.Model
 {
     public class ShoppingCart
     {
-        public List<CartItem> Items { get; set; } = [];
-
-        public int ItemCount
-        {
-            get
-            {
-                return Items.Sum(item => item.Quantity);
-            }
-        }
-
-        public decimal TotalPrice
-        {
-            get
-            {
-                return Items.Sum(item => item.Price * item.Quantity);
-            }
-        }
+        public List<ShoppingCartItem> Items { get; set; } = [];
 
         public required string ShippingAddress { get; set; }
         public required string PaymentMethod { get; set; }
         public required string BillingAddress { get; set; }
 
-        public void AddItem(int productId, string productName, int quantity, decimal price)
+        public void AddItem(int productId, string productName, int quantity, decimal price, Product product)
         {
             var item = Items.FirstOrDefault(i => i.ProductId == productId);
             if (item == null)
             {
-                Items.Add(new CartItem
-                {
-                    ProductId = productId,
-                    ProductName = productName,
-                    Quantity = quantity,
-                    Price = price
-                });
+                Items.Add(new ShoppingCartItem(productId, productName, quantity, price, product));
             }
             else
             {
@@ -51,13 +34,9 @@
                 Items.Remove(item);
             }
         }
-    }
 
-    public class CartItem
-    {
-        public int ProductId { get; set; }
-        public required string ProductName { get; set; }
-        public int Quantity { get; set; }
-        public decimal Price { get; set; }
+        public decimal TotalPrice => Items.Sum(item => item.TotalPrice);
+
+        public int ItemCount => Items.Sum(item => item.Quantity);
     }
 }

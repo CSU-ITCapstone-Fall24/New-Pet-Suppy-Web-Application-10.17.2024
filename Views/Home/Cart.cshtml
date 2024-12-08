@@ -1,12 +1,18 @@
-﻿@using Pet_Web_Application_10._12._24_F.Models.Cart
-@model Pet_Web_Application_10._12._24_F.Models.Cart.IndexModel
+﻿@page
+@using Pet_Web_Application_10._12._24_F.Models.Cart
+
+@model IndexModel
 @{
     ViewData["Title"] = "Cart";
 }
+
 <h1>Cart</h1>
 <p>Welcome to your cart!</p>
 
-<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>
+<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>System.NullReferenceException: 'Object reference not set to an instance of an object.'
+
+AspNetCoreGeneratedDocument.Views_Home_Cart.ViewData.get returned null.
+
 <p>Website is secured with SSL</p>
 
 <h3>1. Shipping address</h3>
@@ -31,8 +37,8 @@
 @foreach (var item in Model.ShoppingCart.Items)
 {
     <div>
-        <p>@item.ProductName</p>
-        <p>$@item.Price & FREE Returns</p>
+        <p>@item.Product.Name</p> <!-- Accessing Product.Name instead of ProductName -->
+        <p>$@item.Product.Price & FREE Returns</p> <!-- Accessing Product.Price instead of Price -->
         <p>Qty: @item.Quantity</p>
         <p>Sold by: Default Seller</p> <!-- Update this if you have a Seller property -->
         <p>Gift options not available</p>
@@ -43,3 +49,12 @@
 
 <p>Total: $@Model.ShoppingCart.TotalPrice</p>
 <button>Place your order</button>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>@ViewData["Message"]</p>
+
+<h2>Checkout (@Model.ShoppingCart.Items.Count item)</h2>
