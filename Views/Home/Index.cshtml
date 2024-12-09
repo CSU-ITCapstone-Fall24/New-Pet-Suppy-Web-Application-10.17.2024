@@ -5,16 +5,15 @@
 }
 
 <div>
-    <h1>Fur Babbies And Supply One Stop Shop</h1>
-    <p>Learn about building Web apps with ASP.NET Core.</p>
-    <p>This is a Non-Profit Organization.</p>
+    <h1 class="white-bold">Fur Babbies And Supply One Stop Shop</h1>
+    <p class="white-bold">Learn about building Web apps with ASP.NET Core.</p>
+    <p class="white-bold">This is a Non-Profit Organization.</p>
 </div>
 
 <div>
-    <h2>Welcome to Our Pet Store!</h2>
-    <p>We offer a variety of products and services for your beloved pets. Explore our site to find out more about what we offer.</p>
+    <h2 class="white-bold">Welcome to Our Pet Store!</h2>
+    <p class="white-bold">We offer a variety of products and services for your beloved pets. Explore our site to find out more about what we offer.</p>
 </div>
-
 
 
 @section Scripts {
@@ -28,6 +27,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <style>
+        .white-bold {
+            color: white;
+            font-weight: bold;
+        }
+
         .donate-button {
             display: inline-block;
             padding: 10px 20px;
@@ -63,24 +67,13 @@
         .fa-shopping-cart {
             margin-right: 5px;
         }
-
     </style>
 </head>
 <body>
-    <!-- Other content of  home page -->
+    <!-- Other content of home page -->
 
     <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Donate", "Home")'">Donate</button>
 
     <!-- Other content of your home page -->
 </body>
 </html>
-
-
-
-<nav>
-    <ul>
-
-        <li><a href="/cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-    </ul>
-</nav>
-

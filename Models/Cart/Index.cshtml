@@ -30,15 +30,7 @@
 
 @foreach (var item in Model.ShoppingCart.Items)
 {
-    <div>
-        <p>@item.Product.Name</p> <!-- Accessing Product.Name instead of ProductName -->
-        <p>$@item.Product.Price & FREE Returns</p> <!-- Accessing Product.Price instead of Price -->
-        <p>Qty: @item.Quantity</p>
-        <p>Sold by: Default Seller</p> <!-- Update this if you have a Seller property -->
-        <p>Gift options not available</p>
-        <p>Item arrives in packaging that shows what’s inside. To hide it, choose Ship in Fur Babies packaging.</p>
-        <p><input type="checkbox" /> Ship in Fur Babies packaging</p>
-    </div>
+  
 }
 
 <p>Total: $@Model.ShoppingCart.TotalPrice</p>

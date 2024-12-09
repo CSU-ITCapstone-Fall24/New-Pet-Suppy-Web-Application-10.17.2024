@@ -1,42 +1,72 @@
 ﻿
 
 
-using Stripe;
-
 namespace Pet_Web_Application_10._12._24_F.Data.Model
 {
     public class ShoppingCart
     {
-        public List<ShoppingCartItem> Items { get; set; } = [];
+        // List of items in the shopping cart
+        public List<CartItem> Items { get; private set; } = [];
 
+        // Properties for additional details
         public required string ShippingAddress { get; set; }
         public required string PaymentMethod { get; set; }
         public required string BillingAddress { get; set; }
 
-        public void AddItem(int productId, string productName, int quantity, decimal price, Product product)
+        // Get the total number of items in the cart
+        public int ItemCount => Items.Sum(item => item.Quantity);
+
+        // Get the total price of all items in the cart
+        public decimal TotalPrice => Items.Sum(item => item.Price * item.Quantity);
+
+        // Add an item to the shopping cart
+        public void AddItem(int productId, string productName, int quantity, decimal price)
         {
-            var item = Items.FirstOrDefault(i => i.ProductId == productId);
-            if (item == null)
+            var existingItem = Items.FirstOrDefault(i => i.ProductId == productId);
+            if (existingItem != null)
             {
-                Items.Add(new ShoppingCartItem(productId, productName, quantity, price, product));
+                existingItem.Quantity += quantity; // Increment quantity if the item already exists
             }
             else
             {
-                item.Quantity += quantity;
+                Items.Add(new CartItem
+                {
+                    ProductId = productId,
+                    ProductName = productName,
+                    Quantity = quantity,
+                    Price = price
+                });
             }
         }
 
+        // Remove an item from the shopping cart by ProductId
         public void RemoveItem(int productId)
         {
-            var item = Items.FirstOrDefault(i => i.ProductId == productId);
-            if (item != null)
-            {
-                Items.Remove(item);
-            }
+            Items.RemoveAll(i => i.ProductId == productId);
         }
 
-        public decimal TotalPrice => Items.Sum(item => item.TotalPrice);
+        // Update the quantity of an item in the shopping cart
+        public void UpdateItemQuantity(int productId, int quantity)
+        {
+            var existingItem = Items.FirstOrDefault(i => i.ProductId == productId);
+            if (existingItem != null && quantity > 0)
+            {
+                existingItem.Quantity = quantity;
+            }
+            else if (existingItem != null && quantity <= 0)
+            {
+                // If the quantity is zero or less, remove the item
+                RemoveItem(productId);
+            }
+        }
+    }
 
-        public int ItemCount => Items.Sum(item => item.Quantity);
+    // Represents an individual item in the shopping cart
+    public class CartItem
+    {
+        public int ProductId { get; set; }
+        public required string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
     }
 }

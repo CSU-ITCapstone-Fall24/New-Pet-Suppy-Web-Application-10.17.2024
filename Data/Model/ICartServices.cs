@@ -6,7 +6,7 @@ namespace Pet_Web_Application_10._12._24_F.Data.Model
     {
         void AddToCart(ShoppingCartItem item);
         List<ShoppingCartItem> GetCartItems();
-        void RemoveFromCart(int productId);
-        decimal GetTotalPrice();
+      
+       
     }
 }

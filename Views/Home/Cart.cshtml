@@ -13,37 +13,11 @@
 
 <p>Website is secured with SSL</p>
 
-<h3>1. Shipping address</h3>
-<p>@Model.ShoppingCart.ShippingAddress</p>
-<p><a href="#">Add delivery instructions</a> | <a href="#">Change</a></p>
-<p>FREE pickup available nearby</p>
-<p>THE UPS STORE • 4.3 mi (See details)</p>
-<p><a href="#">Change to pickup</a></p>
 
-<h3>2. Payment method</h3>
-<p>Paying with @Model.ShoppingCart.PaymentMethod</p>
-<p>Billing address: @Model.ShoppingCart.BillingAddress</p>
-<p><a href="#">Add a gift card or promotion code or voucher</a></p>
-<p><input type="text" placeholder="Enter code" /> <button>Apply</button></p>
-<p><a href="#">Change</a></p>
 
-<h3>3. Review items and shipping</h3>
-<p>Get a $1 digital reward with FREE No-Rush Shipping.</p>
-<p>Arriving Dec 10, 2024 If you order in the next 7 hours and 18 minutes (Details)</p>
-<p>Items shipped from FurBabies.com</p>
 
-@foreach (var item in Model.ShoppingCart.Items)
-{
-    <div>
-        <p>@item.Product.Name</p>
-        <p>$@item.Product.Price & FREE Returns</p>
-        <p>Qty: @item.Quantity</p>
-        <p>Sold by: Default Seller</p>
-        <p>Gift options not available</p>
-        <p>Item arrives in packaging that shows what’s inside. To hide it, choose Ship in Fur Babies packaging.</p>
-        <p><input type="checkbox" /> Ship in Fur Babies packaging</p>
-    </div>
-}
+
+
 
 <p>Total: $@Model.ShoppingCart.TotalPrice</p>
 <button>Place your order</button>

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Pet_Web_Application_10._12._24_F.Data.Model;
-using Pet_Web_Application_10._12._24_F.Models;
 
 namespace Pet_Web_Application_10._12._24_F.Data.Model
 {
@@ -19,18 +17,14 @@ namespace Pet_Web_Application_10._12._24_F.Data.Model
             return _cartItems;
         }
 
-        public void RemoveFromCart(int productId)
-        {
-            var item = _cartItems.FirstOrDefault(i => i.Product.Id == productId);
-            if (item != null)
-            {
-                _cartItems.Remove(item);
-            }
-        }
-
         public decimal GetTotalPrice()
         {
-            return _cartItems.Sum(item => item.TotalPrice);
+            throw new NotImplementedException();
+        }
+
+        public void RemoveFromCart(int productId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

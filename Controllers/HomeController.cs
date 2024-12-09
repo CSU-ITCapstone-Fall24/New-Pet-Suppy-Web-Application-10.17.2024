@@ -24,7 +24,7 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
         public IActionResult Index()
         {
             // Load products from the database
-            
+
             return View();
         }
 
@@ -58,52 +58,31 @@ namespace Pet_Web_Application_10._12._24_F.Controllers
         {
             return View();
         }
-
-
-        public IActionResult Cart()
-        {
-            return View();
-        }
-
-
-
-
         public IActionResult SubmitDonation()
         {
             return View();
         }
 
+
+
         [HttpPost]
         public IActionResult AddToCart(int productId, string productName, int quantity, decimal price)
         {
-            // Create a Product object
-            var product = new Product
-            {
-                Id = productId,
-                Name = productName,
-                ShortDescription = "Short description", // Set appropriate values
-                LongDescription = "Long description", // Set appropriate values
-                ImageUrl = Url.Content("~/images/product_image.jpg"), // Set appropriate values
-                ImageThumbnailUrl = Url.Content("~/images/product_image_thumb.jpg"), // Set appropriate values
-                ProductInstock = 10, // Set appropriate values
-                CategoryId = 1, // Set appropriate values
-                Category = new Category
-                {
-                    Id = 1,
-                    CategoryName = "Category Name",
-                    Description = "Category Description",
-                    Products = [],
-                    Categories = [],
-                    Breed = []
-                },
-                IsPreferredDog = true // Set appropriate values
-            };
-
-            _shoppingCart.AddItem(productId, productName, quantity, price, product);
+            _shoppingCart.AddItem(productId, productName, quantity, price);
             return RedirectToAction("Cart");
         }
 
-        
+
+        public IActionResult Cart()
+        {
+            var model = new Pet_Web_Application_10._12._24_F.Models.Cart.IndexModel
+            {
+                ShoppingCart = _shoppingCart
+                // Initialize other properties as needed
+            };
+            return View("Cart", model);
+        }
+
 
 
 
