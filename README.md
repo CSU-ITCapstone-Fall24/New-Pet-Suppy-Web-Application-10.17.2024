@@ -1,6 +1,6 @@
 # Fur Babies and Pet Supply Official Website 
-##Branch Name-Master
-##ASPNETCORE.NET MVC 
+Branch Name-Master
+ASPNETCORE.NET MVC 
 This is the official Website App that will be used to buy products for puppies, adopt, and donate to the organization to support puppies with or without their forever homes. 10/29/2024
 ## Installation 
 Go to Github, under repositories, go to New-Pet-Web-Application
